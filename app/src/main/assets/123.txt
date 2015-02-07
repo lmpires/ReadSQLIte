@@ -1,1 +1,1 @@
-123,eletronica456,controle789,circuitos
+123,eletronica,7,4,calculo1,calculo2,calculo3,segunda

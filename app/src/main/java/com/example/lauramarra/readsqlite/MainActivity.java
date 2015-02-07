@@ -24,8 +24,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         codigo = (EditText) findViewById(R.id.codigo);
-
         textView = (TextView) findViewById(R.id.view);
+
         getFields();
     }
 
@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
         dbHandler = new MyDBHandler(this, null, null, 1);
 
         BufferedReader bufferedReader = null;
-        String codigo, nome;
+        String codigo, nome, periodo, creditos, preRequisito_1, preRequisito_2, preRequisito_3, diaSemana;
         Materia materia;
 
         try {
@@ -44,23 +44,21 @@ public class MainActivity extends ActionBarActivity {
 
             while ((sCurrentLine = bufferedReader.readLine()) != null) {
 
-                //if (sCurrentLine != null);
                 String[] message = sCurrentLine.split(",");
 
                 codigo = message[0];
                 nome = message[1];
+                periodo = message[2];
+                creditos = message[3];
+                preRequisito_1 = message[4];
+                preRequisito_2 = message[5];
+                preRequisito_3 = message[6];
+                diaSemana = message[7];
 
-
-                //textView.setText("Código: " + codigo + "\n" + "nome: " + nome + "\n" );
-
-                materia = new Materia(codigo, nome);
+                materia = new Materia(codigo, nome, periodo, creditos, preRequisito_1, preRequisito_2, preRequisito_3, diaSemana);
                 dbHandler.addMateria(materia);
 
                 printDatabase();
-
-
-
-                //e = db2.insertRecord(faculty1, deparment1, name1, officeNumber1, phone1, email1, email1);
             }
         } catch (IOException e1) {
             e1.printStackTrace();
